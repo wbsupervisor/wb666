@@ -26,14 +26,14 @@ const LandingPage = () => (
   <>
     <main>
       <HeroSlider />
-      <PartnerSlider />
-      <PromoCards />
       <StepsSection />
       <CountdownBanner />
       <GamesSection />
+      <PromoCards />
       <WhyUsSection />
-      <Testimonials />
       <SEOContent />
+      <PartnerSlider />
+      <Testimonials />
       <FAQSection />
     </main>
     <Footer />

@@ -1,10 +1,16 @@
 import { useState } from 'react';
-import { Globe, ChevronDown, Flame, Sparkles } from 'lucide-react';
+import { Globe, ChevronDown, Flame, Sparkles, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 
 export const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string | null>(null);
+
+  const toggleMobileDropdown = (name: string) => {
+    setMobileActiveDropdown(mobileActiveDropdown === name ? null : name);
+  };
 
   const slotProviders = [
     { name: "", type: "", isHot: true, imageUrl: "https://illuminatelabs.space/asset/images/hotgame_lucky365.webp" },
@@ -413,9 +419,208 @@ export const Navbar = () => {
                   Register
                 </Link>
               </div>
+
+              {/* Mobile Menu Button */}
+              <button 
+                className="lg:hidden p-2 text-gray-600 hover:text-sky-500 transition-colors"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 overflow-hidden rounded-b-3xl"
+            >
+              <div className="px-6 py-6 space-y-4 max-h-[80vh] overflow-y-auto">
+                <Link 
+                  to="/" 
+                  className="block text-sm font-black text-sky-500 uppercase tracking-widest py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Home
+                </Link>
+                <a 
+                  href="#" 
+                  className="block text-sm font-black text-gray-600 hover:text-sky-500 uppercase tracking-widest py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Promo
+                </a>
+
+                {/* Mobile Slots */}
+                <div>
+                  <button 
+                    onClick={() => toggleMobileDropdown('slots')}
+                    className="flex items-center justify-between w-full text-sm font-black text-gray-600 hover:text-sky-500 uppercase tracking-widest py-2"
+                  >
+                    Slots
+                    <ChevronDown size={16} className={`transition-transform ${mobileActiveDropdown === 'slots' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileActiveDropdown === 'slots' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden bg-gray-50 rounded-xl mt-2"
+                      >
+                        <div className="p-4 grid grid-cols-2 gap-3">
+                          {slotProviders.map((provider) => (
+                            <div key={provider.name} className="text-xs text-gray-600 py-1 flex items-center gap-2">
+                              <div className="w-1 h-1 bg-sky-500 rounded-full"></div>
+                              {provider.name || "Provider"}
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Mobile Live Casino */}
+                <div>
+                  <button 
+                    onClick={() => toggleMobileDropdown('casino')}
+                    className="flex items-center justify-between w-full text-sm font-black text-gray-600 hover:text-sky-500 uppercase tracking-widest py-2"
+                  >
+                    Live Casino
+                    <ChevronDown size={16} className={`transition-transform ${mobileActiveDropdown === 'casino' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileActiveDropdown === 'casino' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden bg-gray-50 rounded-xl mt-2"
+                      >
+                        <div className="p-4 grid grid-cols-2 gap-3">
+                          {casinoProviders.map((provider) => (
+                            <div key={provider.name} className="text-xs text-gray-600 py-1 flex items-center gap-2">
+                              <div className="w-1 h-1 bg-red-500 rounded-full"></div>
+                              {provider.name || "Provider"}
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Mobile Sports */}
+                <div>
+                  <button 
+                    onClick={() => toggleMobileDropdown('sports')}
+                    className="flex items-center justify-between w-full text-sm font-black text-gray-600 hover:text-sky-500 uppercase tracking-widest py-2"
+                  >
+                    Sport
+                    <ChevronDown size={16} className={`transition-transform ${mobileActiveDropdown === 'sports' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileActiveDropdown === 'sports' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden bg-gray-50 rounded-xl mt-2"
+                      >
+                        <div className="p-4 grid grid-cols-2 gap-3">
+                          {sportsProviders.map((provider) => (
+                            <div key={provider.name} className="text-xs text-gray-600 py-1 flex items-center gap-2">
+                              <div className="w-1 h-1 bg-green-500 rounded-full"></div>
+                              {provider.name || "Provider"}
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Mobile Lottery */}
+                <div>
+                  <button 
+                    onClick={() => toggleMobileDropdown('lottery')}
+                    className="flex items-center justify-between w-full text-sm font-black text-gray-600 hover:text-sky-500 uppercase tracking-widest py-2"
+                  >
+                    Lottery
+                    <ChevronDown size={16} className={`transition-transform ${mobileActiveDropdown === 'lottery' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileActiveDropdown === 'lottery' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden bg-gray-50 rounded-xl mt-2"
+                      >
+                        <div className="p-4 grid grid-cols-1 gap-3">
+                          {lotteryProviders.map((provider) => (
+                            <div key={provider.name} className="text-xs text-gray-600 py-1 flex items-center gap-2">
+                              <div className="w-1 h-1 bg-orange-500 rounded-full"></div>
+                              {provider.name}
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Mobile About */}
+                <div>
+                  <button 
+                    onClick={() => toggleMobileDropdown('about')}
+                    className="flex items-center justify-between w-full text-sm font-black text-gray-600 hover:text-sky-500 uppercase tracking-widest py-2"
+                  >
+                    About
+                    <ChevronDown size={16} className={`transition-transform ${mobileActiveDropdown === 'about' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileActiveDropdown === 'about' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden bg-gray-50 rounded-xl mt-2"
+                      >
+                        <div className="p-4 space-y-4">
+                          {Object.entries(aboutMenu).map(([category, items]) => (
+                            <div key={category}>
+                              <h4 className="text-xs font-bold text-sky-500 mb-2">{category}</h4>
+                              <div className="space-y-2 pl-2 border-l-2 border-gray-200">
+                                {items.map((item) => (
+                                  <div key={item} className="text-xs text-gray-600">
+                                    {item === "Winbox Partnership" ? (
+                                      <Link to="/partnership" onClick={() => setIsMobileMenuOpen(false)}>{item}</Link>
+                                    ) : item === "Terms and Conditions" ? (
+                                      <Link to="/terms" onClick={() => setIsMobileMenuOpen(false)}>{item}</Link>
+                                    ) : (
+                                      <a href="#" onClick={() => setIsMobileMenuOpen(false)}>{item}</a>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </div>
   );

@@ -12,14 +12,9 @@ export const CountdownBanner = () => {
       colorName: "Orange"
     },
     {
-      gradient: "from-gray-300 to-gray-500",
-      image: "https://illuminatelabs.space/asset/images/Iphone17_silver.png",
-      colorName: "Silver"
-    },
-    {
-      gradient: "from-blue-500 to-indigo-700",
-      image: "https://illuminatelabs.space/asset/images/Iphone17_blue.png",
-      colorName: "Blue"
+      gradient: "from-yellow-400 to-yellow-600",
+      image: "https://illuminatelabs.space/asset/images/winbox_freegoldbar.png",
+      colorName: "Gold"
     }
   ];
 
@@ -82,7 +77,7 @@ export const CountdownBanner = () => {
                 exit={{ opacity: 0, x: 20, rotate: 0 }}
                 transition={{ duration: 0.8 }}
                 src={themes[currentTheme].image} 
-                alt={`iPhone ${themes[currentTheme].colorName}`} 
+                alt={`Prize ${themes[currentTheme].colorName}`} 
                 className="absolute inset-0 w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" 
                 referrerPolicy="no-referrer" 
               />
@@ -96,8 +91,12 @@ export const CountdownBanner = () => {
             >
               Daily Live Luckydraw Countdown
             </motion.p>
-            <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-none">
-              1 DAY <br className="hidden md:block" /> 1 IPHONE
+            <h2 className={`${themes[currentTheme].colorName === 'Gold' ? 'text-4xl md:text-6xl' : 'text-5xl md:text-8xl'} font-black tracking-tighter leading-none`}>
+              {themes[currentTheme].colorName === 'Gold' ? (
+                <>100 GRAMS <br className="hidden md:block" /> GOLD PER DAY</>
+              ) : (
+                <>1 DAY <br className="hidden md:block" /> 1 IPHONE</>
+              )}
             </h2>
             <p className="text-sm font-bold opacity-80 uppercase tracking-widest pt-2">
               Live Start At Every Night 9pm (GMT+8)
