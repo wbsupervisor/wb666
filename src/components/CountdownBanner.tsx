@@ -117,7 +117,11 @@ export const CountdownBanner = () => {
               Previous Winner Record
             </button>
             <button className="bg-white text-black px-6 py-3 rounded-2xl font-black text-[10px] md:text-xs hover:bg-gray-100 transition-all uppercase tracking-widest shadow-xl w-full sm:w-auto">
-              How to get iPhone?
+              {themes[currentTheme].colorName === 'Gold' ? (
+                <>How to get 100 grams gold bar? <br className="hidden md:block" /></>
+              ) : (
+                <>How to get iPhone? <br className="hidden md:block" /></>
+              )}
             </button>
           </div>
         </div>
