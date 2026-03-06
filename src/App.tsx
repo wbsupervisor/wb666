@@ -25,6 +25,7 @@ import { TermsAndConditionsPage } from './components/TermsAndConditionsPage';
 const LandingPage = () => (
   <>
     <main>
+      <h1 className="sr-only">Winbox - Daily Live Lucky Draw & Trusted Online Casino Platform</h1>
       <HeroSlider />
       <StepsSection />
       <CountdownBanner />
