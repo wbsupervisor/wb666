@@ -6,23 +6,23 @@ export const HeroSlider = () => {
   
   const slides = [
     {
-      image: "https://illuminatelabs.space/asset/images/HomeBanner_00.png",
+      image: "https://illuminatelabs.space/asset/images/HomeBanner_05.jpeg",
       alt: "Winbox Daily Live Lucky Draw"
     },
     {
-      image: "https://illuminatelabs.space/asset/images/HomeBanner_01.jpg",
+      image: "https://illuminatelabs.space/asset/images/HomeBanner_10.jpg",
       alt: "Winbox Trusted Partnership with Ez8"
     },
     {
-      image: "https://illuminatelabs.space/asset/images/HomeBanner_02.webp",
+      image: "https://illuminatelabs.space/asset/images/HomeBanner_11.avif",
       alt: "Winbox Free Turnover Bonus"
     },
     {
-      image: "https://illuminatelabs.space/asset/images/HomeBanner_03.webp",
+      image: "https://illuminatelabs.space/asset/images/HomeBanner_12.avif",
       alt: "Winbox Turnover Ranking Championship"
     },
     {
-      image: "https://illuminatelabs.space/asset/images/HomeBanner_04.webp",
+      image: "https://illuminatelabs.space/asset/images/HomeBanner_02.webp",
       alt: "Winbox Ambassador"
     }
   ];
@@ -42,7 +42,7 @@ export const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="relative h-[200px] md:h-[400px] lg:h-[500px] overflow-hidden group bg-black">
+    <div className="relative w-full aspect-[2134/700] md:aspect-auto h-auto md:h-[600px] lg:h-[700px] overflow-hidden group bg-black">
       {/* Slides */}
       <div 
         className="absolute inset-0 flex transition-transform duration-500 ease-out"
@@ -53,7 +53,7 @@ export const HeroSlider = () => {
             <img 
               src={slide.image} 
               alt={slide.alt} 
-              className="w-full h-full object-contain md:object-cover"
+              className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -65,13 +65,13 @@ export const HeroSlider = () => {
         onClick={prevSlide}
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 p-2 rounded-full text-white transition-colors backdrop-blur-sm opacity-0 group-hover:opacity-100"
       >
-        <ChevronLeft size={32} />
+        <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
       </button>
       <button 
         onClick={nextSlide}
         className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 p-2 rounded-full text-white transition-colors backdrop-blur-sm opacity-0 group-hover:opacity-100"
       >
-        <ChevronRight size={32} />
+        <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
       </button>
 
       {/* Dots */}
