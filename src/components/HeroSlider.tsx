@@ -10,7 +10,7 @@ export const HeroSlider = () => {
       alt: "Winbox Daily Live Lucky Draw"
     },
     {
-      image: "https://illuminatelabs.space/asset/images/HomeBanner_10.jpg",
+      image: "https://illuminatelabs.space/asset/images/HomeBanner_10.avif",
       alt: "Winbox Trusted Partnership with Ez8"
     },
     {
