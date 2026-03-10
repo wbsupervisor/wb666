@@ -128,7 +128,7 @@ export const Navbar = () => {
                       <div className="grid grid-cols-5 gap-4">
                         {slotProviders.map((provider, idx) => (
                           <motion.div
-                            key={provider.name}
+                            key={`slot-${idx}`}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: idx * 0.03 }}
@@ -187,7 +187,7 @@ export const Navbar = () => {
                       <div className="grid grid-cols-5 gap-4">
                         {casinoProviders.map((provider, idx) => (
                           <motion.div
-                            key={provider.name}
+                            key={`casino-${idx}`}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: idx * 0.05 }}
@@ -252,7 +252,7 @@ export const Navbar = () => {
                       <div className="grid grid-cols-4 gap-4">
                         {sportsProviders.map((provider, idx) => (
                           <motion.div
-                            key={provider.name}
+                            key={`sport-${idx}`}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: idx * 0.05 }}
@@ -307,7 +307,7 @@ export const Navbar = () => {
                       <div className="grid grid-cols-1 gap-4">
                         {lotteryProviders.map((provider, idx) => (
                           <motion.div
-                            key={provider.name}
+                            key={`lottery-${idx}`}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: idx * 0.05 }}
@@ -473,8 +473,8 @@ export const Navbar = () => {
                         className="overflow-hidden bg-gray-50 rounded-xl mt-2"
                       >
                         <div className="p-4 grid grid-cols-2 gap-3">
-                          {slotProviders.map((provider) => (
-                            <div key={provider.name} className="text-xs text-gray-600 py-1 flex items-center gap-2">
+                          {slotProviders.map((provider, idx) => (
+                            <div key={`mobile-slot-${idx}`} className="text-xs text-gray-600 py-1 flex items-center gap-2">
                               <div className="w-1 h-1 bg-sky-500 rounded-full"></div>
                               {provider.name || "Provider"}
                             </div>
@@ -503,8 +503,8 @@ export const Navbar = () => {
                         className="overflow-hidden bg-gray-50 rounded-xl mt-2"
                       >
                         <div className="p-4 grid grid-cols-2 gap-3">
-                          {casinoProviders.map((provider) => (
-                            <div key={provider.name} className="text-xs text-gray-600 py-1 flex items-center gap-2">
+                          {casinoProviders.map((provider, idx) => (
+                            <div key={`mobile-casino-${idx}`} className="text-xs text-gray-600 py-1 flex items-center gap-2">
                               <div className="w-1 h-1 bg-red-500 rounded-full"></div>
                               {provider.name || "Provider"}
                             </div>
@@ -533,8 +533,8 @@ export const Navbar = () => {
                         className="overflow-hidden bg-gray-50 rounded-xl mt-2"
                       >
                         <div className="p-4 grid grid-cols-2 gap-3">
-                          {sportsProviders.map((provider) => (
-                            <div key={provider.name} className="text-xs text-gray-600 py-1 flex items-center gap-2">
+                          {sportsProviders.map((provider, idx) => (
+                            <div key={`mobile-sport-${idx}`} className="text-xs text-gray-600 py-1 flex items-center gap-2">
                               <div className="w-1 h-1 bg-green-500 rounded-full"></div>
                               {provider.name || "Provider"}
                             </div>
@@ -563,8 +563,8 @@ export const Navbar = () => {
                         className="overflow-hidden bg-gray-50 rounded-xl mt-2"
                       >
                         <div className="p-4 grid grid-cols-1 gap-3">
-                          {lotteryProviders.map((provider) => (
-                            <div key={provider.name} className="text-xs text-gray-600 py-1 flex items-center gap-2">
+                          {lotteryProviders.map((provider, idx) => (
+                            <div key={`mobile-lottery-${idx}`} className="text-xs text-gray-600 py-1 flex items-center gap-2">
                               <div className="w-1 h-1 bg-orange-500 rounded-full"></div>
                               {provider.name}
                             </div>

@@ -10,10 +10,8 @@ const partners = [
   { id: 7, name: "Lucky 365", logo: "partner_Lucky365.png" },
   { id: 8, name: "Maxbet", logo: "partner_maxbet.png" },
   { id: 9, name: "Playtech", logo: "partner_playtech.png" },
-  { id: 10, name: "Pragmatic Play", logo: "partner_pragmaticplay.png" },
-  { id: 11, name: "RCB988", logo: "partner_rcb988.png" },
-  { id: 12, name: "SBOBET", logo: "partner_sbobet.png" },
-  { id: 13, name: "SV388", logo: "partner_sv388.png" },
+  { id: 10, name: "Pragmatic Play", logo: "partner_pragmatic.png" },
+  { id: 11, name: "SBOBET", logo: "partner_sbobet.png" },
 ];
 
 const IMAGE_PREFIX = "https://illuminatelabs.space/asset/images/";
